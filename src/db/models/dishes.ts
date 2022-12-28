@@ -1,6 +1,5 @@
 import mongoose, { Document } from "mongoose";
 
-
 const dishesSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
@@ -10,7 +9,7 @@ const dishesSchema = new mongoose.Schema(
     price: { type: Number, required: true },
     signature: { type: String, required: false },
     type: { type: String, required: false },
- },
+  },
   { timestamps: true }
 );
 

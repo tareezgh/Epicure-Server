@@ -1,6 +1,5 @@
 import mongoose, { Document } from "mongoose";
 
-
 const chefsSchema = new mongoose.Schema(
   {
     chefName: { type: String, required: true },
