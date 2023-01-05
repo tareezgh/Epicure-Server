@@ -3,7 +3,13 @@ import Orders from "../db/models/orders";
 export class OrdersDal {
   public createOrder(order: any) {
     order = new Orders({
+      restaurant: order.restaurant,
+      image: order.image,
       name: order.name,
+      price: order.price,
+      side: order.side,
+      changes: order.changes,
+      quantity: order.quantity,
     });
 
     order.save(function (err: any, results: any) {
