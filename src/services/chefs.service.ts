@@ -12,6 +12,12 @@ export class ChefsService {
     const res = await dal.getChef(param);
     return res;
   }
+  
+  public async getChefOfTheWeek() {
+    const dal = new ChefsDal();
+    const res = await dal.getChefOfTheWeek();
+    return res;
+  }
 
   public async createChef(chef: any) {
     const dal = new ChefsDal();

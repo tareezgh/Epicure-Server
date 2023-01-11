@@ -1,7 +1,7 @@
 import Chefs from "../db/models/chefs";
 
 export class ChefsDal {
-  public createChef(chef: any) {
+  public async createChef(chef: any) {
     chef = new Chefs({
       name: chef.name,
       description: chef.description,
@@ -13,12 +13,7 @@ export class ChefsDal {
       isChefOfTheWeek: chef.isChefOfTheWeek,
     });
 
-    chef.save(function (err: any, results: any) {
-      if (err) {
-        throw err;
-      }
-      return results;
-    });
+    const response = await Chefs.create(chef);
   }
 
   public async updateChef(chef: any) {
@@ -44,6 +39,24 @@ export class ChefsDal {
         },
       },
     ]);
+    return data;
+  }  
+  
+  public async getChefOfTheWeek() {
+    const data = await Chefs.findOne({
+      isChefOfTheWeek: true,
+    })
+    // const data = await Chefs.find([
+    //   { $match: { name: `${param.name}` } },
+    //   {
+    //     $lookup: {
+    //       localField: "restaurants",
+    //       foreignField: "_id",
+    //       from: "restaurants",
+    //       as: "restaurants",
+    //     },
+    //   },
+    // ]);
     return data;
   }
 }

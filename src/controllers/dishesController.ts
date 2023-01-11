@@ -11,6 +11,16 @@ export class DishesController {
       return res.send(error);
     }
   }
+  public static async getDishesOfRestaurant(req: Request, res: Response) {
+    try {
+      const params = req.body;
+      const service = new DishesService();
+      const dishes = await service.getDishesOfRestaurant(params);
+      return res.send(dishes);
+    } catch (error) {
+      return res.send(error);
+    }
+  }
 
   public static async createDish(req: Request, res: Response) {
     try {
@@ -29,6 +39,17 @@ export class DishesController {
       const service = new DishesService();
       const dish = await service.updateDish(params);
       return res.send(dish);
+    } catch (error) {
+      return res.send(error);
+    }
+  }
+
+  public static async getDishes2(req: Request, res: Response) {
+    try {
+      const params = req.body;
+      const service = new DishesService();
+      const dishes = await service.getDishes2(params);
+      return res.send(dishes);
     } catch (error) {
       return res.send(error);
     }

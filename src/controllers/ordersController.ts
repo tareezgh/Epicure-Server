@@ -11,6 +11,16 @@ export class OrdersController {
       return res.send(error);
     }
   }
+  public static async getOrdersOfUser(req: Request, res: Response) {
+    try {
+      const params = req.body;
+      const service = new OrdersService();
+      const orders = await service.getOrdersOfUser(params);
+      return res.send(orders);
+    } catch (error) {
+      return res.send(error);
+    }
+  }
 
   public static async createOrder(req: Request, res: Response) {
     try {

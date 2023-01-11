@@ -27,10 +27,10 @@ export class UsersDal {
     return data?.email === user.email;
   }
 
-  public async updateUser(user: any) {
+  public async updateUserOrders(user: any) {
     const data = await Users
       .findOne({
-        name: user.name,
+        email: user.email,
       })
       .updateOne({ $set: { age: user.age } });
     return data;

@@ -7,6 +7,12 @@ export class DishesService {
     return res;
   }
 
+  public async getDishesOfRestaurant(restaurantName: any) {
+    const dal = new DishesDal();
+    const res = dal.getDishesOfRestaurant(restaurantName);
+    return res;
+  }
+
   public async createDish(dish: any) {
     const dal = new DishesDal();
     const res = dal.createDish(dish);
@@ -16,6 +22,12 @@ export class DishesService {
   public async updateDish(dish: any) {
     const dal = new DishesDal();
     const res = await dal.updateDish(dish);
+    return res;
+  }
+
+  public async getDishes2(dish: any) {
+    const dal = new DishesDal();
+    const res = dal.getDish(dish);
     return res;
   }
 }

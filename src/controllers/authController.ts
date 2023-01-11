@@ -7,7 +7,7 @@ export class AuthController {
       const params = req.body;
       const service = new UsersService();
       const user = await service.login(params);
-      return res.status(200).send("User logged in");
+      return res.status(200).send(user);
     } catch (error) {
       return res.send(error);
     }

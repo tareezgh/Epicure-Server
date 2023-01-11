@@ -28,6 +28,13 @@ export class DishesDal {
     return data;
   }
 
+  public async getDishesOfRestaurant(restaurantName: any) {
+    const data = await Dishes.find({
+      restaurant: restaurantName.name,
+    });
+    return data;
+  }
+
   public findAll(query: any = null) {
     return Dishes.find(query);
   }

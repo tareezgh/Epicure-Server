@@ -3,6 +3,7 @@ import mongoose, { Document } from "mongoose";
 const ordersSchema = new mongoose.Schema(
   {
     restaurant: { type: String, required: true },
+    userName: {type: String, required: false },
     image: { type: String, required: true },
     name: { type: String, required: true },
     price: { type: Number, required: true },

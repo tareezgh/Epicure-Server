@@ -7,6 +7,12 @@ export class OrdersService {
     return res;
   }
 
+  public async getOrdersOfUser(user: any) {
+    const dal = new OrdersDal();
+    const res = dal.getOrdersOfUser(user);
+    return res;
+  }
+  
   public async createOrder(order: any) {
     const dal = new OrdersDal();
     const res = dal.createOrder(order);

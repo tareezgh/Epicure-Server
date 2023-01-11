@@ -9,7 +9,8 @@ export class UsersService {
       return { status: "failure", message: "Incorrect email or password" };
     const response = await bcrypt.compare(user.password, hashedPasswordFromDB);
 
-    if (response) return { status: "success", message: "Matched" };
+    if (response) return { status: "success", message: "User logged in" };
+    else return { status: "failure", message: "Incorrect email or password" };
   }
 
   public async register(user: any) {
