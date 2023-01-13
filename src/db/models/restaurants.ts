@@ -10,7 +10,7 @@ const restaurantsSchema = new mongoose.Schema(
     isOpen: { type: Boolean, required: true },
     address: { type: String, required: false },
     image: { type: String, required: false },
-    openingHours: { type: Array, required: false },
+    openingHours: { type: Object, required: false },
   },
   { timestamps: true }
 );

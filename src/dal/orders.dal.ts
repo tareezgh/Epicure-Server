@@ -15,11 +15,12 @@ export class OrdersDal {
     });
 
     const response = await Orders.create(order);
-    const result = await Users.findOne({
+    await Users.findOne({
       email: response.userName,
     }).updateOne({
       $push: { orders: response._id },
     });
+    return response;
   }
 
   public async updateOrder(order: any) {

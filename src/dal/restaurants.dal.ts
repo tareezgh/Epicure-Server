@@ -12,10 +12,11 @@ export class RestaurantsDal {
       isOpen: restaurant.isOpen,
       address: restaurant.address,
       image: restaurant.image,
+      openingHours: restaurant.openingHours,
     });
 
     const response = await Restaurants.create(restaurant);
-    const result = await Chefs.findOne({
+    await Chefs.findOne({
       chefName: response.chefName,
     }).updateOne({
       $push: { restaurants: response._id },

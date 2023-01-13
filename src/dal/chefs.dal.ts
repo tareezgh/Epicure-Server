@@ -3,7 +3,7 @@ import Chefs from "../db/models/chefs";
 export class ChefsDal {
   public async createChef(chef: any) {
     chef = new Chefs({
-      name: chef.name,
+      chefName: chef.chefName,
       description: chef.description,
       image: chef.image,
 
@@ -14,6 +14,7 @@ export class ChefsDal {
     });
 
     const response = await Chefs.create(chef);
+    return response;
   }
 
   public async updateChef(chef: any) {
@@ -27,9 +28,10 @@ export class ChefsDal {
     return Chefs.find(query);
   }
 
-  public async getChef(param: { [key: string]: string }) {
+  
+  public async getChefOfTheWeek() {
     const data = await Chefs.aggregate([
-      { $match: { name: `${param.name}` } },
+      { $match: { isChefOfTheWeek: true } },
       {
         $lookup: {
           localField: "restaurants",
@@ -40,12 +42,12 @@ export class ChefsDal {
       },
     ]);
     return data;
-  }  
-  
-  public async getChefOfTheWeek() {
-    const data = await Chefs.findOne({
-      isChefOfTheWeek: true,
-    })
+  }
+
+  // public async getChefOfTheWeek() {
+  //   const data = await Chefs.findOne({
+  //     isChefOfTheWeek: true,
+  //   });
     // const data = await Chefs.find([
     //   { $match: { name: `${param.name}` } },
     //   {
@@ -57,6 +59,6 @@ export class ChefsDal {
     //     },
     //   },
     // ]);
-    return data;
-  }
+  //   return data;
+  // }
 }

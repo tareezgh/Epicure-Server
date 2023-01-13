@@ -1,12 +1,12 @@
 import { UsersDal } from "../dal/users.dal";
-import bcrypt from "bcrypt";
+const bcrypt = require("bcrypt");
 
 export class UsersService {
   public async login(user: any) {
     const dal = new UsersDal();
     const hashedPasswordFromDB = await dal.getUserPassword(user);
     if (!hashedPasswordFromDB)
-      return { status: "failure", message: "Incorrect email or password" };
+      return { status: "failure", message: "User doesn't exist!!" };
     const response = await bcrypt.compare(user.password, hashedPasswordFromDB);
 
     if (response) return { status: "success", message: "User logged in" };
@@ -20,11 +20,12 @@ export class UsersService {
     if (isUserExist)
       return { status: "failure", message: "Email already used!" };
 
-    bcrypt.hash(user.password, saltRounds, async (err, hash) => {
+    bcrypt.hash(user.password, saltRounds, async (err: any, hash: any) => {
       user["password"] = hash;
       const respond = await dal.createUser(user);
       return respond;
     });
+    return { status: "failure", message: "Something is wrong!" };
   }
 
   public async getUsers() {

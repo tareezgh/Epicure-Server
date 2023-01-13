@@ -7,11 +7,6 @@ export class ChefsService {
     return res;
   }
 
-  public async getChef(param: { [key: string]: string }) {
-    const dal = new ChefsDal();
-    const res = await dal.getChef(param);
-    return res;
-  }
   
   public async getChefOfTheWeek() {
     const dal = new ChefsDal();

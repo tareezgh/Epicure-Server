@@ -12,20 +12,9 @@ export class ChefsController {
     }
   }
 
-  public static async getChef(req: Request, res: Response) {
-    try {
-      const param = req.body;
-      const service = new ChefsService();
-      const chef = await service.getChef(param);
-      return res.send(chef);
-    } catch (error) {
-      return res.send(error);
-    }
-  } 
   
   public static async getChefOfTheWeek(req: Request, res: Response) {
     try {
-      // const param = req.body;
       const service = new ChefsService();
       const chef = await service.getChefOfTheWeek();
       return res.send(chef);
