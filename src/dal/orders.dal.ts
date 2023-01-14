@@ -33,6 +33,13 @@ export class OrdersDal {
     return data;
   }
 
+  public async deleteOrderById(orderID: any) {
+    const data = await Orders.findByIdAndDelete(orderID.id);
+
+    if (data) return { status: "success", message: "Delete successfully" };
+    else return { status: "failure", message: "Doesn't delete!" };
+  }
+
   public findAll(query: any = null) {
     return Orders.find(query);
   }
@@ -44,18 +51,5 @@ export class OrdersDal {
     return data;
   }
 
-  // public async getOrders(param: { [key: string]: string }) {
-  //   const data = await Orders.aggregate([
-  //     { $match: { userName: `${param.name}` } },
-  //     {
-  //       $lookup: {
-  //         localField: "restaurants",
-  //         foreignField: "_id",
-  //         from: "restaurants",
-  //         as: "restaurants",
-  //       },
-  //     },
-  //   ]);
-  //   return data;
-  // }
+
 }

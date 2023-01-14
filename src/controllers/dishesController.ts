@@ -44,14 +44,4 @@ export class DishesController {
     }
   }
 
-  public static async getDishes2(req: Request, res: Response) {
-    try {
-      const params = req.body;
-      const service = new DishesService();
-      const dishes = await service.getDishes2(params);
-      return res.send(dishes);
-    } catch (error) {
-      return res.send(error);
-    }
-  }
 }

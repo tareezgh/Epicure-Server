@@ -39,18 +39,5 @@ export class DishesDal {
     return Dishes.find(query);
   }
 
-  public async getDish(param: { [key: string]: string }) {
-    const data = await Dishes.aggregate([
-      { $match: { name: `${param.name}` } },
-      {
-        $lookup: {
-          localField: "restaurants",
-          foreignField: "_id",
-          from: "restaurants",
-          as: "restaurants",
-        },
-      },
-    ]);
-    return data;
-  }
+  
 }

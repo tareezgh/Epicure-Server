@@ -25,9 +25,4 @@ export class DishesService {
     return res;
   }
 
-  public async getDishes2(dish: any) {
-    const dal = new DishesDal();
-    const res = dal.getDish(dish);
-    return res;
-  }
 }

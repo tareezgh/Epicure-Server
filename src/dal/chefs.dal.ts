@@ -44,21 +44,4 @@ export class ChefsDal {
     return data;
   }
 
-  // public async getChefOfTheWeek() {
-  //   const data = await Chefs.findOne({
-  //     isChefOfTheWeek: true,
-  //   });
-    // const data = await Chefs.find([
-    //   { $match: { name: `${param.name}` } },
-    //   {
-    //     $lookup: {
-    //       localField: "restaurants",
-    //       foreignField: "_id",
-    //       from: "restaurants",
-    //       as: "restaurants",
-    //     },
-    //   },
-    // ]);
-  //   return data;
-  // }
 }

@@ -43,4 +43,15 @@ export class OrdersController {
       return res.send(error);
     }
   }
+  
+  public static async deleteOrderById(req: Request, res: Response) {
+    try {
+      const params = req.body;
+      const service = new OrdersService();
+      const order = await service.deleteOrderById(params);
+      return res.send(order);
+    } catch (error) {
+      return res.send(error);
+    }
+  }
 }
