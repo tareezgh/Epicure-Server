@@ -54,4 +54,15 @@ export class OrdersController {
       return res.send(error);
     }
   }
+  public static async completeOrder(req: Request, res: Response) {
+    try {
+      const params = req.body;
+      const service = new OrdersService();
+      const order = await service.completeOrder(params);
+      return res.send(order);
+    } catch (error) {
+      return res.send(error);
+    }
+  }
+
 }

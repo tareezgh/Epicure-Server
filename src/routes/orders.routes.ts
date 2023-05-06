@@ -10,4 +10,6 @@ router.post("/createOrder", OrdersController.createOrder);
 router.delete("/deleteOrderById", OrdersController.deleteOrderById);
 router.post("/updateOrder", OrdersController.updateOrder); // not used
 
+router.post("/completeOrder", OrdersController.completeOrder);
+
 export default router;

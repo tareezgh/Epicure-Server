@@ -25,7 +25,6 @@ export class UsersService {
       const respond = await dal.createUser(user);
       return respond;
     });
-    // return { status: "failure", message: "Something is wrong!" };
   }
 
   public async getUsers() {

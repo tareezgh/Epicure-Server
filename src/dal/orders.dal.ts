@@ -51,5 +51,10 @@ export class OrdersDal {
     return data;
   }
 
-
+  public async completeOrder(details: any) {
+    const data = await Orders.find({
+      userName: details.name,
+    });
+    return data;
+  }
 }

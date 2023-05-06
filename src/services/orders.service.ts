@@ -24,10 +24,16 @@ export class OrdersService {
     const res = await dal.updateOrder(order);
     return res;
   }
-  
+
   public async deleteOrderById(order: any) {
     const dal = new OrdersDal();
     const res = await dal.deleteOrderById(order);
+    return res;
+  }
+
+  public async completeOrder(details: any) {
+    const dal = new OrdersDal();
+    const res = await dal.completeOrder(details);
     return res;
   }
 }
