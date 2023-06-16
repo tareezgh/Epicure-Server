@@ -21,6 +21,14 @@ export class UsersDal {
     return data?.password;
   }
 
+  public async getUserAuth(user: any) {
+    const data = await Users.findOne({
+      email: user.email,
+    });
+
+    return data?.authentication;
+  }
+
   public async checkUser(user: any) {
     const data = await Users.findOne({
       email: user.email,

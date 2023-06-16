@@ -9,7 +9,13 @@ export class UsersService {
       return { status: "failure", message: "User doesn't exist!!" };
     const response = await bcrypt.compare(user.password, hashedPasswordFromDB);
 
-    if (response) return { status: "success", message: "User logged in" };
+    const userAuth = await dal.getUserAuth(user);
+    if (response)
+      return {
+        status: "success",
+        message: "User logged in",
+        authentication: userAuth,
+      };
     else return { status: "failure", message: "Incorrect email or password" };
   }
 
